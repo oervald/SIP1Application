@@ -1,0 +1,17 @@
+Group Members
+
+David Wroblewski
+	git id: Unrealsiege
+	
+Casper Tobias Hansen
+	git id: Wuzzquir
+
+Nikos Papageorgiou
+	git id: npgeorgiou
+
+Henrik Dyrting Ørvald
+	git id: Oervald
+	
+	
+Git repository
+https://github.com/oervald/SIP1Application.git
