@@ -6,7 +6,9 @@
 
 package EnityClass;
 
+import Interfaces.DBFacade;
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,12 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "proposal")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Proposal.findAll", query = "SELECT p FROM Proposal p"),
-    @NamedQuery(name = "Proposal.findById", query = "SELECT p FROM Proposal p WHERE p.id = :id"),
-    @NamedQuery(name = "Proposal.findByTitle", query = "SELECT p FROM Proposal p WHERE p.title = :title"),
-    @NamedQuery(name = "Proposal.findBySuggestedTeacher", query = "SELECT p FROM Proposal p WHERE p.suggestedTeacher = :suggestedTeacher"),
-    @NamedQuery(name = "Proposal.findByStatus", query = "SELECT p FROM Proposal p WHERE p.status = :status")})
+
 public class Proposal implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,8 +54,10 @@ public class Proposal implements Serializable {
     public Proposal() {
     }
 
-    public Proposal(Integer id) {
-        this.id = id;
+    public Proposal(String title , String description, String suggedstedTeacher ) {
+       this.title = title;
+       this.description = description;
+       this.suggestedTeacher = suggedstedTeacher;
     }
 
     public Integer getId() {
@@ -109,29 +108,11 @@ public class Proposal implements Serializable {
         this.poolID = poolID;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Proposal)) {
-            return false;
-        }
-        Proposal other = (Proposal) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
 
     @Override
     public String toString() {
         return "EnityClass.Proposal[ id=" + id + " ]";
     }
+
     
 }

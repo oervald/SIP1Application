@@ -2,15 +2,15 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="dk.cphbusiness.oervald_SIP1Application_jar_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>EnityClass.Pool</class>
     <class>EnityClass.Person</class>
+    <class>EnityClass.Pool</class>
     <class>EnityClass.Proposal</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://jobdatabase-instance.c2gvfuzbyz3i.eu-central-1.rds.amazonaws.com:3306/JobDatabase"/>
-      <property name="javax.persistence.jdbc.user" value="nikos"/>
-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="66reggae"/>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="nikos"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>
