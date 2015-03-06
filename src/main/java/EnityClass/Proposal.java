@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package EnityClass;
 
 import Interfaces.DBFacade;
@@ -28,13 +27,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Henrik
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "Proposal.findOneProposal",
+            query = "SELECT p FROM Proposal p WHERE p.title = :title"
+    ),
+    @NamedQuery(
+            name = "Proposal.getAllProposals",
+            query = "SELECT p FROM Proposal p"
+    )})
+
 @Table(name = "proposal")
 @XmlRootElement
 
 public class Proposal implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
@@ -54,10 +64,10 @@ public class Proposal implements Serializable {
     public Proposal() {
     }
 
-    public Proposal(String title , String description, String suggedstedTeacher ) {
-       this.title = title;
-       this.description = description;
-       this.suggestedTeacher = suggedstedTeacher;
+    public Proposal(String title, String description, String suggedstedTeacher) {
+        this.title = title;
+        this.description = description;
+        this.suggestedTeacher = suggedstedTeacher;
     }
 
     public Integer getId() {
@@ -108,11 +118,9 @@ public class Proposal implements Serializable {
         this.poolID = poolID;
     }
 
-
     @Override
     public String toString() {
-        return "EnityClass.Proposal[ id=" + id + " ]";
+        return "EnityClass.Proposal[ id=" + id + " ] " + description + "  " + suggestedTeacher;
     }
 
-    
 }

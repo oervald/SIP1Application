@@ -43,8 +43,8 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Person(Integer id, String fname, String lname, String role) {
-        this.id = id;
+    public Person( String fname, String lname, String role) {
+        
         this.fname = fname;
         this.lname = lname;
         this.role = role;

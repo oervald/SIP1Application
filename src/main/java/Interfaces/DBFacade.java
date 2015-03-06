@@ -6,16 +6,21 @@
 
 package Interfaces;
 
+import EnityClass.Person;
+import EnityClass.Pool;
 import EnityClass.Proposal;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Henrik
  */
 public interface DBFacade {
-    public ArrayList getAllProposals();
+    public List getAllProposals();
     public void addProposal(Proposal proposal);
     public Proposal getOneProposal(String title);
+    public void addPerson(Person person);
+    public void addToPool(Proposal proposal, Pool pool);
     
 }

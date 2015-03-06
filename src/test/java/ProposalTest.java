@@ -5,8 +5,10 @@
  */
 
 import EnityClass.EmManager;
+import EnityClass.Person;
 import EnityClass.Proposal;
 import static java.security.MessageDigest.isEqual;
+import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,16 +24,36 @@ import org.junit.Test;
 public class ProposalTest {
 
     @Test
-    public void addOneProposal(){
+    public void testAddOneProposal() throws InterruptedException{
         Proposal p = new Proposal("Test Title", "Test Description", "Test Teacher");
-        Proposal q;
+        Proposal q = null;
         EmManager manager = new EmManager();
         manager.addProposal(p);
         
+       
         q = manager.getOneProposal("Test Title");
+        System.out.println("THIS IS NOT NULL : " + q);
         
         assertThat(p.getTitle() , is (q.getTitle()));
         assertThat(p.getDescription(), is(q.getDescription()));
         assertThat(p.getSuggestedTeacher(), is(q.getSuggestedTeacher()));
+        
+        
+    }
+    
+    
+    @Test
+    public void testGetAll(){
+    EmManager manager = new EmManager();
+   List<Person> persons = manager.getAllProposals();
+    assertThat(persons.size() , is(1));
+    }
+    
+    @Test
+    public void testAddPerson(){
+    EmManager manager = new EmManager();
+    Person p = new Person( "Test FPerson", "Test LPerson", "TestPerson");
+    
+    manager.addPerson(p);
     }
 }
