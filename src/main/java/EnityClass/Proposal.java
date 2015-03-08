@@ -48,15 +48,20 @@ public class Proposal implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
+    
     @Column(name = "title")
     private String title;
+    
     @Lob
     @Column(name = "description")
     private String description;
+    
     @Column(name = "suggested_teacher")
     private String suggestedTeacher;
+    
     @Column(name = "status")
     private Integer status;
+    
     @JoinColumn(name = "poolID", referencedColumnName = "ID")
     @ManyToOne
     private Pool poolID;
