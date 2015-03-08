@@ -70,6 +70,7 @@ public class Proposal implements Serializable {
     }
 
     public Proposal(String title, String description, String suggedstedTeacher) {
+        
         this.title = title;
         this.description = description;
         this.suggestedTeacher = suggedstedTeacher;

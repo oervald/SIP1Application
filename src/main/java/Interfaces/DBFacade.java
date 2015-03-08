@@ -21,6 +21,6 @@ public interface DBFacade {
     public void addProposal(Proposal proposal);
     public Proposal getOneProposal(String title);
     public void addPerson(Person person);
-    public void addToPool(Proposal proposal, Pool pool);
+    public void setStatusField(Proposal proposal, Pool pool);
     
 }

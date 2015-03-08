@@ -96,7 +96,7 @@ public class EmManager implements DBFacade {
     }
 
     @Override
-    public void addToPool(Proposal proposal, Pool pool) {
+    public void setStatusField(Proposal proposal, Pool pool) {
          EntityManager em = emf.createEntityManager();
         String title = proposal.getTitle();
         Proposal p = getOneProposal(title);

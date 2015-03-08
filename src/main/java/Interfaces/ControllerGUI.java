@@ -1,6 +1,8 @@
 package Interfaces;
 
+import dto.ProposalDto;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -10,6 +12,7 @@ import java.util.ArrayList;
      
   ArrayList getAllProposals();
   Boolean addProposal(String title, String description, String teacher);
-  void getFirstRoundSelection(int[] proposalId);
+  List<ProposalDto> getFirstRoundSelection();
+  void setFirstRoundSelection(int[] proposalId);
   
 }
