@@ -10,6 +10,7 @@ import dto.ProposalDto;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -42,12 +43,12 @@ public class NewJFrame extends javax.swing.JFrame {
         model1 = new DefaultListModel();
         model2 = new DefaultListModel();
         model3 = new DefaultListModel();
-        
-        arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
+
+        arrayListOfProposalsFromDB = C.getAllProposals();
+        for (ProposalDto dto : arrayListOfProposalsFromDB) {
             model1.addElement(dto.toString());
         }
-        
+
         jList_AllreadySuggestedProposals.setModel(model1);
         jList_FirstRoundPossibleProposals.setModel(model2);
         jList_FirstRoundFinalProposals.setModel(model3);
@@ -164,8 +165,10 @@ public class NewJFrame extends javax.swing.JFrame {
 
         mainPanel.add(PanelOne, "card2");
 
+        jList_FirstRoundFinalProposals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(jList_FirstRoundFinalProposals);
 
+        jList_FirstRoundPossibleProposals.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(jList_FirstRoundPossibleProposals);
 
         jButtonRemoveFromApproved.setText("<---");
@@ -270,12 +273,12 @@ public class NewJFrame extends javax.swing.JFrame {
             String title = "Title from GUI";
             String description = "Description from GUI";
             String teacher = "Teacher from GUI";
-            
+
             System.out.println(title + description + teacher);
             C.addProposal(title, description, teacher);
 
         }
-       
+
     }//GEN-LAST:event_jButton_AddProposalActionPerformed
 
     private void menuOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuOneMouseClicked
@@ -286,75 +289,66 @@ public class NewJFrame extends javax.swing.JFrame {
     private void menuTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTwoMouseClicked
         CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "card3");
-        
-         arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
+
+        arrayListOfProposalsFromDB = C.getAllProposals();
+        for (ProposalDto dto : arrayListOfProposalsFromDB) {
             model2.addElement(dto.toString());
         }
-        
-        
+
+
     }//GEN-LAST:event_menuTwoMouseClicked
 
     private void jButtonAddToApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToApprovedActionPerformed
-        //take selected electives and move them to final model
-        int[] selection = jList_FirstRoundPossibleProposals.getSelectedIndices();
+        //take selected elective and move it to final model
+        int selection = jList_FirstRoundPossibleProposals.getSelectedIndex();
 
-        int counter = 0;
-        for (int i : selection) {
-            String elective = jList_FirstRoundPossibleProposals.getModel().getElementAt(i).toString();
-            model2.remove(counter);
-            model3.addElement(elective);
-            counter++;
-        }
+        String elective = jList_FirstRoundPossibleProposals.getModel().getElementAt(selection).toString();
+        model2.remove(selection);
+        model3.addElement(elective);
+
     }//GEN-LAST:event_jButtonAddToApprovedActionPerformed
 
     private void jButtonRemoveFromApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveFromApprovedActionPerformed
-        //take selected electives and remove them from final model
-        int[] selection = jList_FirstRoundFinalProposals.getSelectedIndices();
-        int counter = 0;
-        for (int i : selection) {
-            String elective = jList_FirstRoundFinalProposals.getModel().getElementAt(i).toString();
-            model3.remove(counter);
-            model2.addElement(elective);
-            counter++;
-        }
+        //take selected elective and remove it from final model
+        int selection = jList_FirstRoundFinalProposals.getSelectedIndex();
+
+        String elective = jList_FirstRoundFinalProposals.getModel().getElementAt(selection).toString();
+        model3.remove(selection);
+        model2.addElement(elective);
 
     }//GEN-LAST:event_jButtonRemoveFromApprovedActionPerformed
 
     private void jButton_doneWithFIrstRoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_doneWithFIrstRoundActionPerformed
         // Take all proposals from second jList, and pass them to controller
-      //  int[] selection = jList_FirstRoundFinalProposals.getSelectedIndices();
-        Integer [] arrayOfIDs = new Integer[model3.getSize()];
-        
-              for(int i=0; i<model3.getSize(); i++){
-              String temp;
-              temp = model3.getElementAt(i);
-              Integer id = Integer.parseInt(temp.split("#")[0]);
-              arrayOfIDs[i] = id;
-              }  
-            
+        //  int[] selection = jList_FirstRoundFinalProposals.getSelectedIndices();
+        Integer[] arrayOfIDs = new Integer[model3.getSize()];
+
+        for (int i = 0; i < model3.getSize(); i++) {
+            String temp;
+            temp = model3.getElementAt(i);
+            Integer id = Integer.parseInt(temp.split("#")[0]);
+            arrayOfIDs[i] = id;
+        }
 
       //  int counter = 0;
         //for (int i : selection) {
-          //  String elective = jList_FirstRoundFinalProposals.getModel().getElementAt(i).toString();
-            //take Id and push it to array
-            //int id = Integer.parseInt(elective.split("#")[0]);
-           // arrayOfIDs[counter] = id;
-            
-           // counter++;
-           
+        //  String elective = jList_FirstRoundFinalProposals.getModel().getElementAt(i).toString();
+        //take Id and push it to array
+        //int id = Integer.parseInt(elective.split("#")[0]);
+        // arrayOfIDs[counter] = id;
+        // counter++;
         //}
         C.setFirstRoundSelection(arrayOfIDs);
         model2.clear();
         model1.clear();
         model3.clear();
-        
-            arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
+
+        arrayListOfProposalsFromDB = C.getAllProposals();
+        for (ProposalDto dto : arrayListOfProposalsFromDB) {
             model2.addElement(dto.toString());
         }
-            arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
+        arrayListOfProposalsFromDB = C.getAllProposals();
+        for (ProposalDto dto : arrayListOfProposalsFromDB) {
             model1.addElement(dto.toString());
         }
     }//GEN-LAST:event_jButton_doneWithFIrstRoundActionPerformed
