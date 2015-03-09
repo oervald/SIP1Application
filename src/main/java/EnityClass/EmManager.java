@@ -7,15 +7,12 @@
 package EnityClass;
 
 import Interfaces.DBFacade;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import org.eclipse.persistence.internal.jpa.EntityManagerImpl;
-import utilities.CloseableManager;
 
 /**
  *
@@ -54,13 +51,14 @@ public class EmManager implements DBFacade {
         transaction.begin();
          try {
             em.persist(proposal);
+            transaction.commit();
         } catch (Exception e) {
             System.err.println(e.getMessage());
             transaction.rollback();
         }
-         System.out.println(proposal);
-        transaction.commit();
+        
         em.close();
+        getOneProposal("Title from GUI");
      
     }
 
@@ -89,19 +87,36 @@ public class EmManager implements DBFacade {
      @Override
     public void addPerson(Person person) {
          EntityManager em = emf.createEntityManager();
-        
-        em.getTransaction();
-        
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
         em.persist(person);
+        em.close();
     }
 
     @Override
-    public void setStatusField(Proposal proposal, Pool pool) {
-         EntityManager em = emf.createEntityManager();
-        String title = proposal.getTitle();
-        Proposal p = getOneProposal(title);
-        em.getTransaction();
-        int id =  pool.getId();
+    public void setStatusField(Integer [] proposalIDs) {
+        
+          for(Integer i : proposalIDs){
+             System.out.println(i);
+         }
+        
+        
+         for(Integer i : proposalIDs){
+             EntityManager em = emf.createEntityManager();
+             EntityTransaction transaction = em.getTransaction();
+             transaction.begin();
+             Proposal temp = em.find(Proposal.class, i);
+             System.out.println(" Before change   "+ temp);
+             
+             temp.setStatus(1);
+             transaction.commit();
+             
+             System.out.println(" After change  "+em.find(Proposal.class, i));
+             
+             
+         
+         }
+         
         
     }
 

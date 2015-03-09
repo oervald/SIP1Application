@@ -1,6 +1,9 @@
 package dto;
 
-public class ProposalDto {
+import EnityClass.Pool;
+import EnityClass.Proposal;
+
+public class ProposalDto extends Proposal {
 
     //declare variables
     private Integer id;
@@ -8,10 +11,10 @@ public class ProposalDto {
     private String description;
     private String suggestedTeacher;
     private Integer status;
-    private PoolDto poolID;
+    private Pool poolID;
 
     //constructor
-    public ProposalDto(Integer id, String title, String description, String suggestedTeacher, Integer status, PoolDto poolID) {
+    public ProposalDto(Integer id, String title, String description, String suggestedTeacher, Integer status, Pool poolID) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -21,10 +24,16 @@ public class ProposalDto {
 
     }
 
+    public ProposalDto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     //methods
     @Override
     public String toString() {
-        return id + "# " + title + "# " + suggestedTeacher;
+        return id + "# " + title + "# " + suggestedTeacher + "#" + status;
     }
+    
+    
 
 }

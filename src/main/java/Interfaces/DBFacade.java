@@ -7,9 +7,7 @@
 package Interfaces;
 
 import EnityClass.Person;
-import EnityClass.Pool;
 import EnityClass.Proposal;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +19,6 @@ public interface DBFacade {
     public void addProposal(Proposal proposal);
     public Proposal getOneProposal(String title);
     public void addPerson(Person person);
-    public void setStatusField(Proposal proposal, Pool pool);
+    public void setStatusField(Integer [] proposalIDs);
     
 }

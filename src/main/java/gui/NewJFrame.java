@@ -5,10 +5,12 @@
  */
 package gui;
 
+import controller.Controller;
 import dto.ProposalDto;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListModel;
 
 /**
@@ -17,13 +19,13 @@ import javax.swing.DefaultListModel;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
-//    Controller C;
+    Controller C;
     Container pane;
     CardLayout layout;
     DefaultListModel<String> model1;
     DefaultListModel<String> model2;
     DefaultListModel<String> model3;
-    ArrayList<ProposalDto> arrayListOfProposalsFromDB;
+    List<ProposalDto> arrayListOfProposalsFromDB;
 
     /**
      * Creates new form NewJFrame
@@ -36,15 +38,15 @@ public class NewJFrame extends javax.swing.JFrame {
         layout = new CardLayout();
         pane.setLayout(layout);
 
-        //c = new Controller();
+        C = new Controller();
         model1 = new DefaultListModel();
         model2 = new DefaultListModel();
         model3 = new DefaultListModel();
         
-//        arrayListOfProposalsFromDB= c.getAllProposals();
-//        for(ProposalDto dto: arrayListOfProposalsFromDB){
-//            model1.addElement(dto.toString());
-//        }
+        arrayListOfProposalsFromDB= C.getAllProposals();
+        for(ProposalDto dto: arrayListOfProposalsFromDB){
+            model1.addElement(dto.toString());
+        }
         
         jList_AllreadySuggestedProposals.setModel(model1);
         jList_FirstRoundPossibleProposals.setModel(model2);
@@ -262,12 +264,18 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton_AddProposalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddProposalActionPerformed
         // check if all fields are set, and if so, pass data to controller
         if (jTextField_Title.getText().isEmpty() || jTextField_Teacher.getText().isEmpty() || jTextArea_Description.getText().isEmpty()) {
-            //make error message
+            System.out.println("Here is the null");
         } else {
             //send to controller
-            //c.addElectiveSuggestion(jTextField_Title.getText(), jTextField_Teacher.getText(), jTextArea_Description.getText());
+            String title = "Title from GUI";
+            String description = "Description from GUI";
+            String teacher = "Teacher from GUI";
+            
+            System.out.println(title + description + teacher);
+            C.addProposal(title, description, teacher);
 
         }
+       
     }//GEN-LAST:event_jButton_AddProposalActionPerformed
 
     private void menuOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuOneMouseClicked
@@ -278,6 +286,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private void menuTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTwoMouseClicked
         CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "card3");
+        
+         arrayListOfProposalsFromDB= C.getAllProposals();
+        for(ProposalDto dto: arrayListOfProposalsFromDB){
+            model2.addElement(dto.toString());
+        }
+        
+        
     }//GEN-LAST:event_menuTwoMouseClicked
 
     private void jButtonAddToApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToApprovedActionPerformed
@@ -308,21 +323,40 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton_doneWithFIrstRoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_doneWithFIrstRoundActionPerformed
         // Take all proposals from second jList, and pass them to controller
-        int[] selection = jList_FirstRoundFinalProposals.getSelectedIndices();
-        int[] arrayOfIDs = new int[selection.length];
+      //  int[] selection = jList_FirstRoundFinalProposals.getSelectedIndices();
+        Integer [] arrayOfIDs = new Integer[model3.getSize()];
         
-        
-        int counter = 0;
-        for (int i : selection) {
-            String elective = jList_FirstRoundFinalProposals.getModel().getElementAt(i).toString();
-            //take Id and push it to array
-            int id = Integer.parseInt(elective.split("#")[0]);
-            arrayOfIDs[counter] = id;
+              for(int i=0; i<model3.getSize(); i++){
+              String temp;
+              temp = model3.getElementAt(i);
+              Integer id = Integer.parseInt(temp.split("#")[0]);
+              arrayOfIDs[i] = id;
+              }  
             
-            counter++;
+
+      //  int counter = 0;
+        //for (int i : selection) {
+          //  String elective = jList_FirstRoundFinalProposals.getModel().getElementAt(i).toString();
+            //take Id and push it to array
+            //int id = Integer.parseInt(elective.split("#")[0]);
+           // arrayOfIDs[counter] = id;
+            
+           // counter++;
            
+        //}
+        C.setFirstRoundSelection(arrayOfIDs);
+        model2.clear();
+        model1.clear();
+        model3.clear();
+        
+            arrayListOfProposalsFromDB= C.getAllProposals();
+        for(ProposalDto dto: arrayListOfProposalsFromDB){
+            model2.addElement(dto.toString());
         }
-        //c.getFirstRoundSelection(intarray);
+            arrayListOfProposalsFromDB= C.getAllProposals();
+        for(ProposalDto dto: arrayListOfProposalsFromDB){
+            model1.addElement(dto.toString());
+        }
     }//GEN-LAST:event_jButton_doneWithFIrstRoundActionPerformed
 
     /**

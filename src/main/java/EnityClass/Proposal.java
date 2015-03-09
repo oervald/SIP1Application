@@ -74,6 +74,8 @@ public class Proposal implements Serializable {
         this.title = title;
         this.description = description;
         this.suggestedTeacher = suggedstedTeacher;
+        this.status = 0;
+      
     }
 
     public Integer getId() {
