@@ -84,9 +84,46 @@ public class NewJFrame extends javax.swing.JFrame {
         jButtonRemoveFromApproved = new javax.swing.JButton();
         jButtonAddToApproved = new javax.swing.JButton();
         jButton_doneWithFIrstRound = new javax.swing.JButton();
+        PanelThree = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jList_PropoalThree = new javax.swing.JList();
+        jTextFieldUserNameThree = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jButtonAddToPrimaryPThree = new javax.swing.JButton();
+        jButtonAddToSecondaryPThree = new javax.swing.JButton();
+        jButtonSaveThree = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jListSecondaryPThree = new javax.swing.JList();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jListPrimaryPThree = new javax.swing.JList();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButtonRemoveFromPrimaryThree = new javax.swing.JButton();
+        jButtonRemoveFromSecondaryThree = new javax.swing.JButton();
+        PanelFour = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jListProposalsFour = new javax.swing.JList();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jListPoolAFour = new javax.swing.JList();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jListPoolBFour = new javax.swing.JList();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jListHappyFour = new javax.swing.JList();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jButtonAddToPoolAFour = new javax.swing.JButton();
+        jButtonAddToPoolBFour = new javax.swing.JButton();
+        jButtonGetHappinessFour = new javax.swing.JButton();
+        jButtonRemoveFromAFour = new javax.swing.JButton();
+        jButtonRemoveFromBFour = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuOne = new javax.swing.JMenu();
         menuTwo = new javax.swing.JMenu();
+        menuThree = new javax.swing.JMenu();
+        MenuFour = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,7 +195,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(54, 54, 54)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -212,7 +249,7 @@ public class NewJFrame extends javax.swing.JFrame {
         PanelTwoLayout.setVerticalGroup(
             PanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTwoLayout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addGroup(PanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -229,6 +266,216 @@ public class NewJFrame extends javax.swing.JFrame {
 
         mainPanel.add(PanelTwo, "card3");
 
+        jScrollPane5.setViewportView(jList_PropoalThree);
+
+        jLabel5.setText("User");
+
+        jButtonAddToPrimaryPThree.setText("Add To Primary");
+
+        jButtonAddToSecondaryPThree.setText("Add To Secondary");
+
+        jButtonSaveThree.setText("Save");
+
+        jScrollPane6.setViewportView(jListSecondaryPThree);
+
+        jLabel6.setText("Secondary");
+
+        jScrollPane7.setViewportView(jListPrimaryPThree);
+
+        jLabel7.setText("Primary");
+
+        jLabel8.setText("Proposals");
+
+        jButtonRemoveFromPrimaryThree.setText("Remove from Primary");
+
+        jButtonRemoveFromSecondaryThree.setText("Remove from Secondary");
+
+        javax.swing.GroupLayout PanelThreeLayout = new javax.swing.GroupLayout(PanelThree);
+        PanelThree.setLayout(PanelThreeLayout);
+        PanelThreeLayout.setHorizontalGroup(
+            PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelThreeLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(PanelThreeLayout.createSequentialGroup()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelThreeLayout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jButtonRemoveFromSecondaryThree))
+                            .addGroup(PanelThreeLayout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonRemoveFromPrimaryThree)
+                                    .addComponent(jButtonAddToSecondaryPThree)))
+                            .addGroup(PanelThreeLayout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(jButtonSaveThree))
+                            .addGroup(PanelThreeLayout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(jButtonAddToPrimaryPThree))))
+                    .addComponent(jLabel8)
+                    .addComponent(jTextFieldUserNameThree, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelThreeLayout.createSequentialGroup()
+                        .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelThreeLayout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))))
+        );
+        PanelThreeLayout.setVerticalGroup(
+            PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelThreeLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelThreeLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jButtonAddToPrimaryPThree)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonRemoveFromPrimaryThree)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAddToSecondaryPThree)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonRemoveFromSecondaryThree)
+                        .addGap(39, 39, 39)
+                        .addComponent(jButtonSaveThree)
+                        .addGap(86, 86, 86))
+                    .addGroup(PanelThreeLayout.createSequentialGroup()
+                        .addComponent(jTextFieldUserNameThree, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8)
+                        .addGap(3, 3, 3)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 52, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelThreeLayout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51))))
+        );
+
+        mainPanel.add(PanelThree, "card4");
+
+        PanelFour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelFourMouseClicked(evt);
+            }
+        });
+
+        jLabel9.setText("Proposal");
+
+        jScrollPane8.setViewportView(jListProposalsFour);
+
+        jScrollPane9.setViewportView(jListPoolAFour);
+
+        jScrollPane10.setViewportView(jListPoolBFour);
+
+        jScrollPane11.setViewportView(jListHappyFour);
+
+        jLabel10.setText("Pool A");
+
+        jLabel11.setText("Pool B");
+
+        jLabel12.setText("HAPPY!");
+
+        jButtonAddToPoolAFour.setText("Add To Pool A");
+
+        jButtonAddToPoolBFour.setText("Add To Pool B");
+
+        jButtonGetHappinessFour.setText("Get happiness");
+
+        jButtonRemoveFromAFour.setText("Remove from A");
+
+        jButtonRemoveFromBFour.setText("Remove from B");
+
+        javax.swing.GroupLayout PanelFourLayout = new javax.swing.GroupLayout(PanelFour);
+        PanelFour.setLayout(PanelFourLayout);
+        PanelFourLayout.setHorizontalGroup(
+            PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelFourLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelFourLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel9)))
+                .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelFourLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFourLayout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(62, 62, 62)))
+                        .addGap(18, 18, 18)
+                        .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelFourLayout.createSequentialGroup()
+                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(27, Short.MAX_VALUE))
+                            .addGroup(PanelFourLayout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel12)
+                                .addGap(87, 87, 87))))
+                    .addGroup(PanelFourLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonAddToPoolAFour)
+                            .addComponent(jButtonRemoveFromAFour))
+                        .addGap(56, 56, 56)
+                        .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelFourLayout.createSequentialGroup()
+                                .addComponent(jButtonAddToPoolBFour)
+                                .addGap(67, 67, 67)
+                                .addComponent(jButtonGetHappinessFour))
+                            .addComponent(jButtonRemoveFromBFour))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        PanelFourLayout.setVerticalGroup(
+            PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelFourLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelFourLayout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAddToPoolAFour)
+                            .addComponent(jButtonAddToPoolBFour)
+                            .addComponent(jButtonGetHappinessFour))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonRemoveFromAFour)
+                            .addComponent(jButtonRemoveFromBFour)))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(PanelFour, "card5");
+
         menuOne.setText("one");
         menuOne.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -244,6 +491,17 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(menuTwo);
+
+        menuThree.setText("three");
+        menuThree.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuThreeMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menuThree);
+
+        MenuFour.setText("Four");
+        jMenuBar1.add(MenuFour);
 
         setJMenuBar(jMenuBar1);
 
@@ -370,6 +628,16 @@ public class NewJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_doneWithFIrstRoundActionPerformed
 
+    private void menuThreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuThreeMouseClicked
+        CardLayout card = (CardLayout) mainPanel.getLayout();
+        card.show(mainPanel, "card4");
+    }//GEN-LAST:event_menuThreeMouseClicked
+
+    private void PanelFourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelFourMouseClicked
+        CardLayout card = (CardLayout) mainPanel.getLayout();
+        card.show(mainPanel, "card5");
+    }//GEN-LAST:event_PanelFourMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -406,29 +674,66 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu MenuFour;
+    private javax.swing.JPanel PanelFour;
     private javax.swing.JPanel PanelOne;
+    private javax.swing.JPanel PanelThree;
     private javax.swing.JPanel PanelTwo;
     private javax.swing.JButton jButtonAddToApproved;
+    private javax.swing.JButton jButtonAddToPoolAFour;
+    private javax.swing.JButton jButtonAddToPoolBFour;
+    private javax.swing.JButton jButtonAddToPrimaryPThree;
+    private javax.swing.JButton jButtonAddToSecondaryPThree;
+    private javax.swing.JButton jButtonGetHappinessFour;
+    private javax.swing.JButton jButtonRemoveFromAFour;
     private javax.swing.JButton jButtonRemoveFromApproved;
+    private javax.swing.JButton jButtonRemoveFromBFour;
+    private javax.swing.JButton jButtonRemoveFromPrimaryThree;
+    private javax.swing.JButton jButtonRemoveFromSecondaryThree;
+    private javax.swing.JButton jButtonSaveThree;
     private javax.swing.JButton jButton_AddProposal;
     private javax.swing.JButton jButton_doneWithFIrstRound;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JList jListHappyFour;
+    private javax.swing.JList jListPoolAFour;
+    private javax.swing.JList jListPoolBFour;
+    private javax.swing.JList jListPrimaryPThree;
+    private javax.swing.JList jListProposalsFour;
+    private javax.swing.JList jListSecondaryPThree;
     private javax.swing.JList jList_AllreadySuggestedProposals;
     private javax.swing.JList jList_FirstRoundFinalProposals;
     private javax.swing.JList jList_FirstRoundPossibleProposals;
+    private javax.swing.JList jList_PropoalThree;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextArea jTextArea_Description;
+    private javax.swing.JTextField jTextFieldUserNameThree;
     private javax.swing.JTextField jTextField_Teacher;
     private javax.swing.JTextField jTextField_Title;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuOne;
+    private javax.swing.JMenu menuThree;
     private javax.swing.JMenu menuTwo;
     // End of variables declaration//GEN-END:variables
 }
