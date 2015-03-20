@@ -74,7 +74,7 @@ public class PersonFacade implements PersonInterface {
         }
         
      
-        
+        em.close();
         
         
     }
@@ -95,6 +95,8 @@ public class PersonFacade implements PersonInterface {
             System.err.println(e.getMessage());
         }
         em.close();
+        
+        System.out.println(persons.get(0).toString());
         return persons.get(0);
     }
 

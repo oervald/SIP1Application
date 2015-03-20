@@ -85,7 +85,7 @@ public class ProposalFacade implements ProposalInterface {
         }
         
         em.close();
-        System.out.println(" before return:  " + proposal.get(0));
+        
        return proposal.get(0);
     }
 
@@ -101,25 +101,14 @@ public class ProposalFacade implements ProposalInterface {
     @Override
     public void setStatusField(Integer [] proposalIDs) {
         
-          for(Integer i : proposalIDs){
-             System.out.println(i);
-         }
-        
-        
          for(Integer i : proposalIDs){
              EntityManager em = emf.createEntityManager();
              EntityTransaction transaction = em.getTransaction();
              transaction.begin();
              Proposal temp = em.find(Proposal.class, i);
-             System.out.println(" Before change   "+ temp);
              
              temp.setStatus(1);
              transaction.commit();
-             
-             System.out.println(" After change  "+em.find(Proposal.class, i));
-             
-             
-         
          }
          
         

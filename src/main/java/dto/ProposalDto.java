@@ -1,9 +1,8 @@
 package dto;
 
 import EnityClass.Pool;
-import EnityClass.Proposal;
 
-public class ProposalDto extends Proposal {
+public class ProposalDto  {
 
     //declare variables
     private Integer id;
@@ -23,6 +22,32 @@ public class ProposalDto extends Proposal {
         this.poolID = poolID;
 
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getSuggestedTeacher() {
+        return suggestedTeacher;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public Pool getPoolID() {
+        return poolID;
+    }
+    
+    
 
     public ProposalDto() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

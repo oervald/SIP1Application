@@ -448,16 +448,25 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add To Primary"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddToPrimaryPThreeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonAddToSecondaryPThree">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add To Secondary"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddToSecondaryPThreeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonSaveThree">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSaveThreeActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane6">
 
@@ -504,11 +513,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove from Primary"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRemoveFromPrimaryThreeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonRemoveFromSecondaryThree">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remove from Secondary"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRemoveFromSecondaryThreeActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

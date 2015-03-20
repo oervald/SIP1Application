@@ -1,5 +1,6 @@
 package Interfaces;
 
+import dto.PersonDto;
 import dto.ProposalDto;
 import java.util.List;
 
@@ -14,6 +15,10 @@ import java.util.List;
   List<ProposalDto> getProposalsFromRound(int round);
   void setFirstRoundSelection(Integer[] proposalId);
   ProposalDto getOneProposal(String title);
+  List<PersonDto> getAllPersons();
+  void setPrimaryAndSecondary(PersonDto person, int [] primary, int [] secondary);
+  PersonDto getOnePerson(String fname, String lname);
+  
       
   
 }

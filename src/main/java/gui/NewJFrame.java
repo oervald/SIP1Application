@@ -6,10 +6,12 @@
 package gui;
 
 import controller.Controller;
+import dto.PersonDto;
 import dto.ProposalDto;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -25,7 +27,9 @@ public class NewJFrame extends javax.swing.JFrame {
     DefaultListModel<String> model1;
     DefaultListModel<String> model2;
     DefaultListModel<String> model3;
-    DefaultListModel<String> model4;
+    DefaultListModel<ProposalDto> model4;
+    DefaultListModel<ProposalDto> model5;
+    DefaultListModel<ProposalDto> model6;
     List<ProposalDto> arrayListOfProposalsFromDB;
     List<ProposalDto> arrayListRound1ElectionProposalsFromDB;
 
@@ -45,10 +49,12 @@ public class NewJFrame extends javax.swing.JFrame {
         model2 = new DefaultListModel();
         model3 = new DefaultListModel();
         model4 = new DefaultListModel();
+        model5 = new DefaultListModel();
+        model6 = new DefaultListModel();
         
         arrayListRound1ElectionProposalsFromDB= C.getProposalsFromRound(1);
         for(ProposalDto dto : arrayListRound1ElectionProposalsFromDB){
-            model4.addElement(dto.toString());
+            model4.addElement(dto);
         }
         
         
@@ -60,7 +66,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jList_AllreadySuggestedProposals.setModel(model1);
         jList_FirstRoundPossibleProposals.setModel(model2);
         jList_FirstRoundFinalProposals.setModel(model3);
-        jList_PropoalThree.setModel(model4);
+        jList_PropoalThree.setModel(model5);
 
     }
 
@@ -281,10 +287,25 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel5.setText("User");
 
         jButtonAddToPrimaryPThree.setText("Add To Primary");
+        jButtonAddToPrimaryPThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddToPrimaryPThreeActionPerformed(evt);
+            }
+        });
 
         jButtonAddToSecondaryPThree.setText("Add To Secondary");
+        jButtonAddToSecondaryPThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddToSecondaryPThreeActionPerformed(evt);
+            }
+        });
 
         jButtonSaveThree.setText("Save");
+        jButtonSaveThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveThreeActionPerformed(evt);
+            }
+        });
 
         jScrollPane6.setViewportView(jListSecondaryPThree);
 
@@ -297,8 +318,18 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel8.setText("Proposals");
 
         jButtonRemoveFromPrimaryThree.setText("Remove from Primary");
+        jButtonRemoveFromPrimaryThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveFromPrimaryThreeActionPerformed(evt);
+            }
+        });
 
         jButtonRemoveFromSecondaryThree.setText("Remove from Secondary");
+        jButtonRemoveFromSecondaryThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveFromSecondaryThreeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelThreeLayout = new javax.swing.GroupLayout(PanelThree);
         PanelThree.setLayout(PanelThreeLayout);
@@ -429,13 +460,12 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelFourLayout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(62, 62, 62)))
-                        .addGap(18, 18, 18)
                         .addGroup(PanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelFourLayout.createSequentialGroup()
                                 .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(27, Short.MAX_VALUE))
+                                .addContainerGap(56, Short.MAX_VALUE))
                             .addGroup(PanelFourLayout.createSequentialGroup()
                                 .addGap(54, 54, 54)
                                 .addComponent(jLabel11)
@@ -641,12 +671,115 @@ public class NewJFrame extends javax.swing.JFrame {
     private void menuThreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuThreeMouseClicked
         CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "card4");
+        jList_PropoalThree.setModel(model4);
+        jListPrimaryPThree.setModel(model5);
+        jListSecondaryPThree.setModel(model6);
     }//GEN-LAST:event_menuThreeMouseClicked
 
     private void PanelFourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelFourMouseClicked
         CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "card5");
     }//GEN-LAST:event_PanelFourMouseClicked
+
+    private void jButtonAddToPrimaryPThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToPrimaryPThreeActionPerformed
+        // TODO add your handling code here:
+        int[] selection = jList_PropoalThree.getSelectedIndices();
+
+        int counter = 0;
+        for (int i : selection) {
+            ProposalDto elective = (ProposalDto) jList_PropoalThree.getModel().getElementAt(i);
+            model4.remove(counter);
+            model5.addElement(elective);
+            counter++;
+        }
+    }//GEN-LAST:event_jButtonAddToPrimaryPThreeActionPerformed
+
+    private void jButtonRemoveFromPrimaryThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveFromPrimaryThreeActionPerformed
+        // TODO add your handling code here:
+         int[] selection = jListPrimaryPThree.getSelectedIndices();
+
+        int counter = 0;
+        for (int i : selection) {
+            ProposalDto elective = (ProposalDto) jListPrimaryPThree.getModel().getElementAt(i);
+            model5.remove(counter);
+            model4.addElement(elective);
+            counter++;
+        }
+    }//GEN-LAST:event_jButtonRemoveFromPrimaryThreeActionPerformed
+
+    private void jButtonAddToSecondaryPThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToSecondaryPThreeActionPerformed
+        // TODO add your handling code here:
+           int[] selection = jList_PropoalThree.getSelectedIndices();
+
+        int counter = 0;
+        for (int i : selection) {
+            ProposalDto elective = (ProposalDto)jList_PropoalThree.getModel().getElementAt(i);
+            model4.remove(counter);
+            model6.addElement(elective);
+            counter++;
+        }
+        
+    }//GEN-LAST:event_jButtonAddToSecondaryPThreeActionPerformed
+
+    private void jButtonRemoveFromSecondaryThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveFromSecondaryThreeActionPerformed
+        // TODO add your handling code here:
+             int[] selection = jListSecondaryPThree.getSelectedIndices();
+
+        int counter = 0;
+        for (int i : selection) {
+            ProposalDto elective = (ProposalDto) jListSecondaryPThree.getModel().getElementAt(i);
+            model6.remove(counter);
+            model4.addElement(elective);
+            counter++;
+        }
+    }//GEN-LAST:event_jButtonRemoveFromSecondaryThreeActionPerformed
+
+    private void jButtonSaveThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveThreeActionPerformed
+        // TODO add your handling code here:
+        
+        String personName = jTextFieldUserNameThree.getText();
+        String fname = "";
+        String lname = "";
+          if(personName.isEmpty()){
+        // do something
+        }else{
+          String [] p = personName.split(",");
+         fname = p[0];
+         lname = p[1];
+          }
+      
+        PersonDto person =C.getOnePerson(fname, lname);
+        
+        System.out.println(person);
+        
+        List<ProposalDto> DTO = (List) Arrays.asList(model5.toArray());
+
+        int[] primaries = new int[2];
+        int i = 0;
+        if(!DTO.isEmpty()){
+           for(ProposalDto d : DTO){
+            primaries[i] =d.getId();
+            i++;
+           }
+        }
+        
+         List<ProposalDto> DTO2 = (List) Arrays.asList(model6.toArray());
+        int[] secondaries = new int[2];
+        int ii = 0;
+        if(!DTO2.isEmpty()){
+           for(ProposalDto d : DTO2){
+            secondaries[ii] =d.getId();
+               System.out.println(d.getId());
+            ii++;
+           }
+        }
+        
+        C.setPrimaryAndSecondary(person, primaries, secondaries);
+        PersonDto p =  C.getOnePerson("Test", "Test");
+        System.out.println(p);
+        System.out.println(p.toString());
+        
+    }//GEN-LAST:event_jButtonSaveThreeActionPerformed
 
     /**
      * @param args the command line arguments

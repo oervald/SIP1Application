@@ -113,7 +113,7 @@ public class Person implements Serializable {
 
     @Override
     public String toString() {
-        return "EnityClass.Person[ id=" + id + " ]";
+        return "EnityClass.Person[ id= " + id + " Fname= " + fname + " Lname=  " + lname + " Role=  " + role + " Primary= " + primaryProposals + " Secondary= + " + secondaryProposals+ "]";
     }
     
 }

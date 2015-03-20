@@ -63,15 +63,11 @@ public class ProposalTest {
     
     ProposalFacade manager = new ProposalFacade();
     List <Proposal> proposals = manager.getProposalsFromRound(1);
-        System.out.println(proposals);
        
     List<Integer> rounds = new ArrayList();
-    int i = 1;
+    int i = 0;
     for(Proposal p : proposals ){
-        
-        rounds.set(i, i);
-        System.out.println(rounds);
-     
+        rounds.add(i, p.getStatus());
         i++;
        
     }
