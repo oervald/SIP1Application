@@ -1,6 +1,6 @@
 package controller;
 
-import EnityClass.EmManager;
+import facades.ProposalFacade;
 import EnityClass.Pool;
 import EnityClass.Proposal;
 import Interfaces.ControllerGUI;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller implements ControllerGUI{
-    EmManager manager = new EmManager();
+    ProposalFacade manager = new ProposalFacade();
 
     @Override
     public List<ProposalDto> getAllProposals() {
@@ -43,8 +43,24 @@ public class Controller implements ControllerGUI{
     }
 
     @Override
-    public List<ProposalDto> getFirstRoundSelection() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<ProposalDto> getProposalsFromRound(int status) {
+       List<Proposal> proposals = manager.getProposalsFromRound(status);
+       List<ProposalDto> dtoProposal = new ArrayList();
+       
+       for(Proposal p : proposals){
+           Pool poolID = p.getPoolID();
+            if(poolID== null){
+        poolID = new Pool(0, "0");
+        }
+       
+       
+       ProposalDto pd = new ProposalDto(p.getId(),p.getTitle(),p.getDescription(),p.getSuggestedTeacher(),p.getStatus(),poolID);
+       
+       
+          dtoProposal.add(pd);
+           
+       }
+       return dtoProposal;
     }
 
     @Override

@@ -4,9 +4,15 @@
  * and open the template in the editor.
  */
 
-package EnityClass;
+package facades;
 
-import Interfaces.DBFacade;
+import EnityClass.Person;
+import EnityClass.Person;
+import EnityClass.Proposal;
+import EnityClass.Proposal;
+import Interfaces.ProposalInterface;
+import Interfaces.ProposalInterface;
+import Interfaces.ProposalInterface;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,7 +24,7 @@ import javax.persistence.Query;
  *
  * @author Henrik
  */
-public class EmManager implements DBFacade {
+public class ProposalFacade implements ProposalInterface {
 
      EntityManagerFactory emf = Persistence.createEntityManagerFactory("dk.cphbusiness.oervald_SIP1Application");
     
@@ -73,8 +79,7 @@ public class EmManager implements DBFacade {
         try{
          Query query = em.createNamedQuery("Proposal.findOneProposal");
         query.setParameter("title", title);
-         proposal = (List<Proposal>) query.getResultList();
-            System.out.println(" getOneProposal in try loop :" + proposal.toString());
+          proposal = (List<Proposal>) query.getResultList();
         }catch(Exception e){
         System.err.println(e.getMessage());
         }
@@ -117,6 +122,29 @@ public class EmManager implements DBFacade {
          
          }
          
+        
+    }
+
+    @Override
+    public List getProposalsFromRound(int status) {
+         
+         EntityManager em = emf.createEntityManager();
+        List<Proposal> proposal = null;
+       
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        
+        try{
+         Query query = em.createNamedQuery("Proposal.getProposalsFromRound");
+        query.setParameter("status", status);
+          proposal = (List<Proposal>) query.getResultList();
+        }catch(Exception e){
+        System.err.println(e.getMessage());
+        }
+        
+        em.close();
+        return proposal;
+        
         
     }
 

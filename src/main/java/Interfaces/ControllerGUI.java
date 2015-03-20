@@ -11,7 +11,7 @@ import java.util.List;
      
   List<ProposalDto> getAllProposals();
   void addProposal(String title, String description, String teacher);
-  List<ProposalDto> getFirstRoundSelection();
+  List<ProposalDto> getProposalsFromRound(int round);
   void setFirstRoundSelection(Integer[] proposalId);
   ProposalDto getOneProposal(String title);
       

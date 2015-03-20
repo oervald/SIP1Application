@@ -5,7 +5,7 @@
  */
 package EnityClass;
 
-import Interfaces.DBFacade;
+import Interfaces.ProposalInterface;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.persistence.Basic;
@@ -35,7 +35,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(
             name = "Proposal.getAllProposals",
             query = "SELECT p FROM Proposal p"
-    )})
+    ),
+    @NamedQuery(
+            name = "Proposal.getProposalsFromRound",
+            query = "SELECT p FROM Proposal p WHERE p.status = :status"
+    )
+})
 
 @Table(name = "proposal")
 @XmlRootElement

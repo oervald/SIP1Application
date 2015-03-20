@@ -23,13 +23,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Henrik
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "Person.findOnePerson",
+            query = "SELECT p FROM Person p WHERE p.fname = :fname AND p.lname = :lname"
+    ),
+    @NamedQuery(
+            name = "Person.getAllPersons",
+            query = "SELECT p FROM Person p"
+    )})
 @Table(name = "person")
 @XmlRootElement
 
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
@@ -39,6 +48,10 @@ public class Person implements Serializable {
     private String lname;
     @Column(name = "role")
     private String role;
+    @Column(name = "primaryProposals")
+    private String primaryProposals;
+    @Column(name = "secondaryProposals")
+    private String secondaryProposals;
 
     public Person() {
     }
@@ -48,6 +61,22 @@ public class Person implements Serializable {
         this.fname = fname;
         this.lname = lname;
         this.role = role;
+    }
+
+    public String getPrimaryProposals() {
+        return primaryProposals;
+    }
+
+    public void setPrimaryProposals(String primaryProposals) {
+        this.primaryProposals = primaryProposals;
+    }
+
+    public String getSecondaryProposals() {
+        return secondaryProposals;
+    }
+
+    public void setSecondaryProposals(String secondaryProposals) {
+        this.secondaryProposals = secondaryProposals;
     }
 
     public Integer getId() {

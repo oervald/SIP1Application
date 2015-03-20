@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 
-import EnityClass.EmManager;
+
+
+
+
+
+
+import facades.ProposalFacade;
 import EnityClass.Person;
 import EnityClass.Proposal;
-import static java.security.MessageDigest.isEqual;
+import java.util.ArrayList;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.is;
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -27,12 +29,11 @@ public class ProposalTest {
     public void testAddOneProposal() throws InterruptedException{
         Proposal p = new Proposal("Test Title", "Test Description", "Test Teacher");
         Proposal q = null;
-        EmManager manager = new EmManager();
+        ProposalFacade manager = new ProposalFacade();
         manager.addProposal(p);
         
        
         q = manager.getOneProposal("Test Title");
-        System.out.println("THIS IS NOT NULL : " + q);
         
         assertThat(p.getTitle() , is (q.getTitle()));
         assertThat(p.getDescription(), is(q.getDescription()));
@@ -44,16 +45,41 @@ public class ProposalTest {
     
     @Test
     public void testGetAll(){
-    EmManager manager = new EmManager();
+    ProposalFacade manager = new ProposalFacade();
    List<Person> persons = manager.getAllProposals();
     assertThat(persons.size() , is(1));
     }
     
     @Test
     public void testAddPerson(){
-    EmManager manager = new EmManager();
+    ProposalFacade manager = new ProposalFacade();
     Person p = new Person( "Test FPerson", "Test LPerson", "TestPerson");
     
     manager.addPerson(p);
+    }
+    
+    @Test
+    public void testGetProposalsFromRound(){
+    
+    ProposalFacade manager = new ProposalFacade();
+    List <Proposal> proposals = manager.getProposalsFromRound(1);
+        System.out.println(proposals);
+       
+    List<Integer> rounds = new ArrayList();
+    int i = 1;
+    for(Proposal p : proposals ){
+        
+        rounds.set(i, i);
+        System.out.println(rounds);
+     
+        i++;
+       
+    }
+        System.out.println(rounds);
+    for(Integer q : rounds){
+    assertThat(q , is(1));
+    }
+    
+    
     }
 }

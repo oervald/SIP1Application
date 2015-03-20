@@ -25,7 +25,9 @@ public class NewJFrame extends javax.swing.JFrame {
     DefaultListModel<String> model1;
     DefaultListModel<String> model2;
     DefaultListModel<String> model3;
+    DefaultListModel<String> model4;
     List<ProposalDto> arrayListOfProposalsFromDB;
+    List<ProposalDto> arrayListRound1ElectionProposalsFromDB;
 
     /**
      * Creates new form NewJFrame
@@ -42,6 +44,13 @@ public class NewJFrame extends javax.swing.JFrame {
         model1 = new DefaultListModel();
         model2 = new DefaultListModel();
         model3 = new DefaultListModel();
+        model4 = new DefaultListModel();
+        
+        arrayListRound1ElectionProposalsFromDB= C.getProposalsFromRound(1);
+        for(ProposalDto dto : arrayListRound1ElectionProposalsFromDB){
+            model4.addElement(dto.toString());
+        }
+        
         
         arrayListOfProposalsFromDB= C.getAllProposals();
         for(ProposalDto dto: arrayListOfProposalsFromDB){
@@ -51,6 +60,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jList_AllreadySuggestedProposals.setModel(model1);
         jList_FirstRoundPossibleProposals.setModel(model2);
         jList_FirstRoundFinalProposals.setModel(model3);
+        jList_PropoalThree.setModel(model4);
 
     }
 
