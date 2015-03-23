@@ -95,8 +95,9 @@ public class PersonFacade implements PersonInterface {
             System.err.println(e.getMessage());
         }
         em.close();
-        
-        System.out.println(persons.get(0).toString());
+        if(persons.get(0) == null){
+            return null;
+        }
         return persons.get(0);
     }
 

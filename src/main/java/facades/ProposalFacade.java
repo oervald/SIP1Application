@@ -64,7 +64,6 @@ public class ProposalFacade implements ProposalInterface {
         }
         
         em.close();
-        getOneProposal("Title from GUI");
      
     }
 

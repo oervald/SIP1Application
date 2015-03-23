@@ -56,7 +56,7 @@ public class ProposalDto  {
     //methods
     @Override
     public String toString() {
-        return id + "# " + title + "# " + suggestedTeacher + "#" + status;
+        return "[ID: " +id +"  Title: " + title + "  Teacher: " + suggestedTeacher + "  Status: " + status + "]";
     }
     
     

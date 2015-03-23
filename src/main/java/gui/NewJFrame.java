@@ -10,7 +10,6 @@ import dto.PersonDto;
 import dto.ProposalDto;
 import java.awt.CardLayout;
 import java.awt.Container;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -24,9 +23,9 @@ public class NewJFrame extends javax.swing.JFrame {
     Controller C;
     Container pane;
     CardLayout layout;
-    DefaultListModel<String> model1;
-    DefaultListModel<String> model2;
-    DefaultListModel<String> model3;
+    DefaultListModel<ProposalDto> model1;
+    DefaultListModel<ProposalDto> model2;
+    DefaultListModel<ProposalDto> model3;
     DefaultListModel<ProposalDto> model4;
     DefaultListModel<ProposalDto> model5;
     DefaultListModel<ProposalDto> model6;
@@ -60,8 +59,10 @@ public class NewJFrame extends javax.swing.JFrame {
         
         arrayListOfProposalsFromDB= C.getAllProposals();
         for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model1.addElement(dto.toString());
+            model1.addElement(dto);
         }
+        
+        
         
         jList_AllreadySuggestedProposals.setModel(model1);
         jList_FirstRoundPossibleProposals.setModel(model2);
@@ -92,6 +93,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea_Description = new javax.swing.JTextArea();
         jButton_AddProposal = new javax.swing.JButton();
+        jLabelError = new javax.swing.JLabel();
         PanelTwo = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList_FirstRoundFinalProposals = new javax.swing.JList();
@@ -117,6 +119,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButtonRemoveFromPrimaryThree = new javax.swing.JButton();
         jButtonRemoveFromSecondaryThree = new javax.swing.JButton();
+        jLabel3ErrorLabel = new javax.swing.JLabel();
         PanelFour = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
@@ -186,9 +189,10 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton_AddProposal))
-                            .addComponent(jLabel3)))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel4))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         PanelOneLayout.setVerticalGroup(
             PanelOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,10 +212,12 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jTextField_Teacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton_AddProposal))
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -346,16 +352,20 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addGap(37, 37, 37)
                                 .addComponent(jButtonRemoveFromSecondaryThree))
                             .addGroup(PanelThreeLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButtonRemoveFromPrimaryThree)
-                                    .addComponent(jButtonAddToSecondaryPThree)))
-                            .addGroup(PanelThreeLayout.createSequentialGroup()
                                 .addGap(88, 88, 88)
                                 .addComponent(jButtonSaveThree))
                             .addGroup(PanelThreeLayout.createSequentialGroup()
                                 .addGap(58, 58, 58)
-                                .addComponent(jButtonAddToPrimaryPThree))))
+                                .addComponent(jButtonAddToPrimaryPThree))
+                            .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelThreeLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel3ErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelThreeLayout.createSequentialGroup()
+                                    .addGap(42, 42, 42)
+                                    .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jButtonRemoveFromPrimaryThree)
+                                        .addComponent(jButtonAddToSecondaryPThree))))))
                     .addComponent(jLabel8)
                     .addComponent(jTextFieldUserNameThree, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
@@ -379,32 +389,36 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelThreeLayout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jButtonAddToPrimaryPThree)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRemoveFromPrimaryThree)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonAddToSecondaryPThree)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRemoveFromSecondaryThree)
-                        .addGap(39, 39, 39)
-                        .addComponent(jButtonSaveThree)
-                        .addGap(86, 86, 86))
-                    .addGroup(PanelThreeLayout.createSequentialGroup()
-                        .addComponent(jTextFieldUserNameThree, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8)
-                        .addGap(3, 3, 3)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 52, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelThreeLayout.createSequentialGroup()
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51))))
+                        .addGap(51, 51, 51))
+                    .addGroup(PanelThreeLayout.createSequentialGroup()
+                        .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel3ErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldUserNameThree, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                        .addGroup(PanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelThreeLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel8)
+                                .addGap(3, 3, 3)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 52, Short.MAX_VALUE))
+                            .addGroup(PanelThreeLayout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jButtonAddToPrimaryPThree)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonRemoveFromPrimaryThree)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonAddToSecondaryPThree)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonRemoveFromSecondaryThree)
+                                .addGap(39, 39, 39)
+                                .addComponent(jButtonSaveThree)
+                                .addGap(86, 86, 86))))))
         );
 
         mainPanel.add(PanelThree, "card4");
@@ -562,7 +576,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton_AddProposalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddProposalActionPerformed
         // check if all fields are set, and if so, pass data to controller
         if (jTextField_Title.getText().isEmpty() || jTextField_Teacher.getText().isEmpty() || jTextArea_Description.getText().isEmpty()) {
-            System.out.println("Here is the null");
+             jLabelError.setText("One or more fields is not filled correctly");
         } else {
             //send to controller
             String title = jTextField_Title.getText();
@@ -575,11 +589,11 @@ public class NewJFrame extends javax.swing.JFrame {
             model2.clear();
              arrayListOfProposalsFromDB= C.getAllProposals();
         for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model1.addElement(dto.toString());
+            model1.addElement(dto);
         }
          arrayListOfProposalsFromDB= C.getAllProposals();
         for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model2.addElement(dto.toString());
+            model2.addElement(dto);
         }
             
 
@@ -598,7 +612,7 @@ public class NewJFrame extends javax.swing.JFrame {
         
          arrayListOfProposalsFromDB= C.getAllProposals();
         for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model2.addElement(dto.toString());
+            model2.addElement(dto);
         }
         
         
@@ -606,53 +620,28 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButtonAddToApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToApprovedActionPerformed
         //take selected electives and move them to final model
-        int[] selection = jList_FirstRoundPossibleProposals.getSelectedIndices();
-
-        int counter = 0;
-        for (int i : selection) {
-            String elective = jList_FirstRoundPossibleProposals.getModel().getElementAt(i).toString();
-            model2.remove(counter);
-            model3.addElement(elective);
-            counter++;
-        }
+        
+        ProposalDto pd = (ProposalDto)jList_FirstRoundPossibleProposals.getSelectedValue();
+        model2.removeElement(pd);
+        model3.addElement(pd);
+        
     }//GEN-LAST:event_jButtonAddToApprovedActionPerformed
 
     private void jButtonRemoveFromApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveFromApprovedActionPerformed
-        //take selected electives and remove them from final model
-        int[] selection = jList_FirstRoundFinalProposals.getSelectedIndices();
-        int counter = 0;
-        for (int i : selection) {
-            String elective = jList_FirstRoundFinalProposals.getModel().getElementAt(i).toString();
-            model3.remove(counter);
-            model2.addElement(elective);
-            counter++;
-        }
+     
+        ProposalDto pd = (ProposalDto) jList_FirstRoundFinalProposals.getSelectedValue();
+        model2.addElement(pd);
+        model3.removeElement(pd);
 
     }//GEN-LAST:event_jButtonRemoveFromApprovedActionPerformed
 
     private void jButton_doneWithFIrstRoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_doneWithFIrstRoundActionPerformed
         // Take all proposals from second jList, and pass them to controller
-      //  int[] selection = jList_FirstRoundFinalProposals.getSelectedIndices();
-        Integer [] arrayOfIDs = new Integer[model3.getSize()];
-        
-              for(int i=0; i<model3.getSize(); i++){
-              String temp;
-              temp = model3.getElementAt(i);
-              Integer id = Integer.parseInt(temp.split("#")[0]);
-              arrayOfIDs[i] = id;
-              }  
-            
 
-      //  int counter = 0;
-        //for (int i : selection) {
-          //  String elective = jList_FirstRoundFinalProposals.getModel().getElementAt(i).toString();
-            //take Id and push it to array
-            //int id = Integer.parseInt(elective.split("#")[0]);
-           // arrayOfIDs[counter] = id;
-            
-           // counter++;
-           
-        //}
+        Integer [] arrayOfIDs = new Integer[model3.getSize()];
+        for(int i = 0; i<model3.getSize(); i++){
+           arrayOfIDs[i] =model3.getElementAt(i).getId();
+        }
         C.setFirstRoundSelection(arrayOfIDs);
         model2.clear();
         model1.clear();
@@ -660,11 +649,11 @@ public class NewJFrame extends javax.swing.JFrame {
         
             arrayListOfProposalsFromDB= C.getAllProposals();
         for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model2.addElement(dto.toString());
+            model2.addElement(dto);
         }
             arrayListOfProposalsFromDB= C.getAllProposals();
         for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model1.addElement(dto.toString());
+            model1.addElement(dto);
         }
     }//GEN-LAST:event_jButton_doneWithFIrstRoundActionPerformed
 
@@ -682,56 +671,31 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_PanelFourMouseClicked
 
     private void jButtonAddToPrimaryPThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToPrimaryPThreeActionPerformed
-        // TODO add your handling code here:
-        int[] selection = jList_PropoalThree.getSelectedIndices();
-
-        int counter = 0;
-        for (int i : selection) {
-            ProposalDto elective = (ProposalDto) jList_PropoalThree.getModel().getElementAt(i);
-            model4.remove(counter);
-            model5.addElement(elective);
-            counter++;
-        }
+ 
+        ProposalDto pd = (ProposalDto)jList_PropoalThree.getSelectedValue();
+        model4.removeElement(pd);
+        model5.addElement(pd);
     }//GEN-LAST:event_jButtonAddToPrimaryPThreeActionPerformed
 
     private void jButtonRemoveFromPrimaryThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveFromPrimaryThreeActionPerformed
-        // TODO add your handling code here:
-         int[] selection = jListPrimaryPThree.getSelectedIndices();
-
-        int counter = 0;
-        for (int i : selection) {
-            ProposalDto elective = (ProposalDto) jListPrimaryPThree.getModel().getElementAt(i);
-            model5.remove(counter);
-            model4.addElement(elective);
-            counter++;
-        }
+    
+          ProposalDto pd = (ProposalDto)jList_PropoalThree.getSelectedValue();
+        model5.removeElement(pd);
+        model4.addElement(pd);
     }//GEN-LAST:event_jButtonRemoveFromPrimaryThreeActionPerformed
 
     private void jButtonAddToSecondaryPThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToSecondaryPThreeActionPerformed
-        // TODO add your handling code here:
-           int[] selection = jList_PropoalThree.getSelectedIndices();
 
-        int counter = 0;
-        for (int i : selection) {
-            ProposalDto elective = (ProposalDto)jList_PropoalThree.getModel().getElementAt(i);
-            model4.remove(counter);
-            model6.addElement(elective);
-            counter++;
-        }
-        
+          ProposalDto pd = (ProposalDto)jList_PropoalThree.getSelectedValue();
+        model4.removeElement(pd);
+        model6.addElement(pd);
     }//GEN-LAST:event_jButtonAddToSecondaryPThreeActionPerformed
 
     private void jButtonRemoveFromSecondaryThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveFromSecondaryThreeActionPerformed
-        // TODO add your handling code here:
-             int[] selection = jListSecondaryPThree.getSelectedIndices();
 
-        int counter = 0;
-        for (int i : selection) {
-            ProposalDto elective = (ProposalDto) jListSecondaryPThree.getModel().getElementAt(i);
-            model6.remove(counter);
-            model4.addElement(elective);
-            counter++;
-        }
+          ProposalDto pd = (ProposalDto)jList_PropoalThree.getSelectedValue();
+        model6.removeElement(pd);
+        model4.addElement(pd);
     }//GEN-LAST:event_jButtonRemoveFromSecondaryThreeActionPerformed
 
     private void jButtonSaveThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveThreeActionPerformed
@@ -740,44 +704,66 @@ public class NewJFrame extends javax.swing.JFrame {
         String personName = jTextFieldUserNameThree.getText();
         String fname = "";
         String lname = "";
-          if(personName.isEmpty()){
-        // do something
+        PersonDto person = null;
+        Boolean OK = true;
+        
+        
+        if(personName.isEmpty()){
+           
+            OK=false;
         }else{
           String [] p = personName.split(",");
          fname = p[0];
          lname = p[1];
+         person =C.getOnePerson(fname, lname);
           }
-      
-        PersonDto person =C.getOnePerson(fname, lname);
         
-        System.out.println(person);
+        if(person== null){
+         if( personName.isEmpty()){ 
+             jLabel3ErrorLabel.setText("Name is missing!");
+         }else{
+         jLabel3ErrorLabel.setText("User is not registered!");
+         }
+         OK=false;
+        }
         
         List<ProposalDto> DTO = (List) Arrays.asList(model5.toArray());
 
         int[] primaries = new int[2];
         int i = 0;
-        if(!DTO.isEmpty()){
-           for(ProposalDto d : DTO){
-            primaries[i] =d.getId();
-            i++;
-           }
+        if(DTO.size() ==2){
+            for(ProposalDto d : DTO){
+                primaries[i] =d.getId();
+                i++;
+            }
+        }else{
+            jLabel3ErrorLabel.setText("One or more primaries are missing!");
+            OK=false;
         }
         
          List<ProposalDto> DTO2 = (List) Arrays.asList(model6.toArray());
         int[] secondaries = new int[2];
         int ii = 0;
-        if(!DTO2.isEmpty()){
+        if(DTO2.size() ==2 && DTO.size() ==2){
            for(ProposalDto d : DTO2){
             secondaries[ii] =d.getId();
-               System.out.println(d.getId());
             ii++;
            }
+        }else{
+            if(DTO.size()!=2){
+                jLabel3ErrorLabel.setText("One or more primaries are missing!");
+            }else{
+                jLabel3ErrorLabel.setText("One or more secondaries are missing!");
+            }
+            
+            OK=false;
         }
         
+        if(OK){
         C.setPrimaryAndSecondary(person, primaries, secondaries);
-        PersonDto p =  C.getOnePerson("Test", "Test");
-        System.out.println(p);
-        System.out.println(p.toString());
+        }else{
+            System.out.println("Hell no");
+        }
         
     }//GEN-LAST:event_jButtonSaveThreeActionPerformed
 
@@ -842,12 +828,14 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel3ErrorLabel;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JList jListHappyFour;
     private javax.swing.JList jListPoolAFour;
     private javax.swing.JList jListPoolBFour;
