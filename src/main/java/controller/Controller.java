@@ -150,7 +150,7 @@ public class Controller implements ControllerGUI{
            
            primary =  p.getPrimaryProposals();
             System.out.println("Primary 1 =  " + primary);
-            if(primary.isEmpty() ||primary == null){
+            if(primary == null){
             primary = "0|0";
             }
             System.out.println("Primary 2 =  " + primary);
@@ -169,13 +169,13 @@ public class Controller implements ControllerGUI{
             }
             
            secondary =  p.getSecondaryProposals();
-            if(secondary.isEmpty() ||secondary == null){
+            if(secondary == null){
             secondary = "0|0";
             String [] secondaries = secondary.split("\\|");
             
             int x = 0;
             for(String s : secondaries){
-                returnSecondary[i] = Integer.parseInt(s);
+                returnSecondary[x] = Integer.parseInt(s);
                 x++;
             }
             

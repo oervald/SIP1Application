@@ -31,7 +31,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(
             name = "Person.getAllPersons",
             query = "SELECT p FROM Person p"
-    )})
+    ),
+    @NamedQuery(
+            name="Person.deleteOnePerson",
+            query = "DELETE p FROM Person p WHERE p.fname = :fname AND p.lname=:lname"
+    )
+})
 @Table(name = "person")
 @XmlRootElement
 

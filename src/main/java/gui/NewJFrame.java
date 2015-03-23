@@ -50,25 +50,16 @@ public class NewJFrame extends javax.swing.JFrame {
         model4 = new DefaultListModel();
         model5 = new DefaultListModel();
         model6 = new DefaultListModel();
-        
-        arrayListRound1ElectionProposalsFromDB= C.getProposalsFromRound(1);
-        for(ProposalDto dto : arrayListRound1ElectionProposalsFromDB){
-            model4.addElement(dto);
-        }
-        
-        
-        arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model1.addElement(dto);
-        }
-        
-        
+
+        resetModels();
         
         jList_AllreadySuggestedProposals.setModel(model1);
         jList_FirstRoundPossibleProposals.setModel(model2);
         jList_FirstRoundFinalProposals.setModel(model3);
-        jList_PropoalThree.setModel(model5);
-
+         jList_PropoalThree.setModel(model4);
+        jListPrimaryPThree.setModel(model5);
+        jListSecondaryPThree.setModel(model6);
+        
     }
 
     /**
@@ -102,6 +93,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButtonRemoveFromApproved = new javax.swing.JButton();
         jButtonAddToApproved = new javax.swing.JButton();
         jButton_doneWithFIrstRound = new javax.swing.JButton();
+        jLabel_Message2 = new javax.swing.JLabel();
         PanelThree = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         jList_PropoalThree = new javax.swing.JList();
@@ -217,7 +209,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -252,7 +244,7 @@ public class NewJFrame extends javax.swing.JFrame {
         PanelTwo.setLayout(PanelTwoLayout);
         PanelTwoLayout.setHorizontalGroup(
             PanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTwoLayout.createSequentialGroup()
+            .addGroup(PanelTwoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(PanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,26 +256,34 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(PanelTwoLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jButton_doneWithFIrstRound)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTwoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel_Message2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(246, 246, 246))
         );
         PanelTwoLayout.setVerticalGroup(
             PanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTwoLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
-                .addGroup(PanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
             .addGroup(PanelTwoLayout.createSequentialGroup()
-                .addGap(192, 192, 192)
-                .addComponent(jButtonAddToApproved)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonRemoveFromApproved)
-                .addGap(58, 58, 58)
-                .addComponent(jButton_doneWithFIrstRound)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel_Message2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelTwoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGroup(PanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(PanelTwoLayout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(jButtonAddToApproved)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonRemoveFromApproved)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton_doneWithFIrstRound)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         mainPanel.add(PanelTwo, "card3");
@@ -406,7 +406,7 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel8)
                                 .addGap(3, 3, 3)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 52, Short.MAX_VALUE))
+                                .addGap(51, 68, Short.MAX_VALUE))
                             .addGroup(PanelThreeLayout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addComponent(jButtonAddToPrimaryPThree)
@@ -525,7 +525,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         mainPanel.add(PanelFour, "card5");
@@ -554,7 +554,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jMenuBar1.add(menuThree);
 
-        MenuFour.setText("Four");
+        MenuFour.setText("four");
         jMenuBar1.add(MenuFour);
 
         setJMenuBar(jMenuBar1);
@@ -585,18 +585,9 @@ public class NewJFrame extends javax.swing.JFrame {
             
             System.out.println(title + description + teacher);
             C.addProposal(title, description, teacher);
-            model1.clear();
-            model2.clear();
-             arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model1.addElement(dto);
-        }
-         arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model2.addElement(dto);
-        }
             
-
+            resetModels();
+            jLabelError.setText("Proposal Saved!");
         }
        
     }//GEN-LAST:event_jButton_AddProposalActionPerformed
@@ -604,18 +595,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private void menuOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuOneMouseClicked
         CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "card2");
+        jLabel3ErrorLabel.setText("");
     }//GEN-LAST:event_menuOneMouseClicked
 
     private void menuTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuTwoMouseClicked
         CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "card3");
-        
-         arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model2.addElement(dto);
-        }
-        
-        
+        jLabel_Message2.setText("");
     }//GEN-LAST:event_menuTwoMouseClicked
 
     private void jButtonAddToApprovedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddToApprovedActionPerformed
@@ -637,32 +623,20 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton_doneWithFIrstRoundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_doneWithFIrstRoundActionPerformed
         // Take all proposals from second jList, and pass them to controller
-
         Integer [] arrayOfIDs = new Integer[model3.getSize()];
         for(int i = 0; i<model3.getSize(); i++){
            arrayOfIDs[i] =model3.getElementAt(i).getId();
         }
         C.setFirstRoundSelection(arrayOfIDs);
-        model2.clear();
-        model1.clear();
-        model3.clear();
-        
-            arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model2.addElement(dto);
-        }
-            arrayListOfProposalsFromDB= C.getAllProposals();
-        for(ProposalDto dto: arrayListOfProposalsFromDB){
-            model1.addElement(dto);
-        }
+        jLabel_Message2.setText("First round selections saved!");
+        resetModels();
     }//GEN-LAST:event_jButton_doneWithFIrstRoundActionPerformed
 
     private void menuThreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuThreeMouseClicked
         CardLayout card = (CardLayout) mainPanel.getLayout();
         card.show(mainPanel, "card4");
-        jList_PropoalThree.setModel(model4);
-        jListPrimaryPThree.setModel(model5);
-        jListSecondaryPThree.setModel(model6);
+        jLabel3ErrorLabel.setText("");
+       
     }//GEN-LAST:event_menuThreeMouseClicked
 
     private void PanelFourMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelFourMouseClicked
@@ -761,12 +735,39 @@ public class NewJFrame extends javax.swing.JFrame {
         
         if(OK){
         C.setPrimaryAndSecondary(person, primaries, secondaries);
+        jLabel3ErrorLabel.setText("Subjects are saved");
+        resetModels();
+        
         }else{
             System.out.println("Hell no");
         }
         
     }//GEN-LAST:event_jButtonSaveThreeActionPerformed
 
+    private void resetModels(){
+      model1.clear();
+      arrayListOfProposalsFromDB= C.getAllProposals();
+        for(ProposalDto dto: arrayListOfProposalsFromDB){
+            model1.addElement(dto);
+        }
+     model2.clear();
+        arrayListOfProposalsFromDB= C.getAllProposals();
+        for(ProposalDto dto: arrayListOfProposalsFromDB){
+            model2.addElement(dto);
+        }
+     model3.clear();
+     model4.clear();
+        arrayListRound1ElectionProposalsFromDB= C.getProposalsFromRound(1);
+        for(ProposalDto dto : arrayListRound1ElectionProposalsFromDB){
+            model4.addElement(dto);
+        }
+     model5.clear();
+     model6.clear();
+        
+        
+        
+     
+    }
     /**
      * @param args the command line arguments
      */
@@ -836,6 +837,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelError;
+    private javax.swing.JLabel jLabel_Message2;
     private javax.swing.JList jListHappyFour;
     private javax.swing.JList jListPoolAFour;
     private javax.swing.JList jListPoolBFour;

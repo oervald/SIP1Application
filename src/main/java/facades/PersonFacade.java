@@ -100,6 +100,25 @@ public class PersonFacade implements PersonInterface {
         }
         return persons.get(0);
     }
+    
+    public void removeOnePerson(Person person){
+        String fname = person.getFname();
+        String lname = person.getLname();
+    EntityManager em = emf.createEntityManager();
+        Query query = em.createNamedQuery("Person.deleteOnePerson");
+         query.setParameter("fname", fname);
+         query.setParameter("lname", lname);
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        try{
+            query.executeUpdate();
+        
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        em.close();
+    
+    }
 
     @Override
     public List<Person> getAllPersons() {

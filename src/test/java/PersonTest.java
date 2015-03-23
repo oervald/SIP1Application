@@ -2,7 +2,10 @@
 import EnityClass.Person;
 import facades.PersonFacade;
 import static org.hamcrest.CoreMatchers.is;
+import org.jmock.integration.junit4.JMock;
+import org.jmock.integration.junit4.JUnitRuleMockery;
 import static org.junit.Assert.assertThat;
+import org.junit.Rule;
 import org.junit.Test;
 
 /*
@@ -17,6 +20,7 @@ import org.junit.Test;
  */
 public class PersonTest {
     
+    
     @Test
     public void testAddOnePerson(){
     PersonFacade pf = new PersonFacade();
@@ -28,6 +32,7 @@ public class PersonTest {
     
     assertThat(q.getLname(), is (p.getLname()));
     assertThat(q.getFname(), is (p.getFname()));
+    pf.removeOnePerson(p);
     
     }
     
@@ -35,6 +40,9 @@ public class PersonTest {
     public void testAddPrimaryAndSecondary(){
    
     PersonFacade pf = new PersonFacade();
+    Person p1 = new Person("Test", "Test", "Test");
+    
+    pf.addNewPerson(p1);
     Person person = pf.getOnePerson("Test", "Test");
     int [] p = {
     1234,5678
@@ -48,6 +56,8 @@ public class PersonTest {
     
     assertThat(x.getPrimaryProposals(), is("1234|5678"));
     assertThat(x.getSecondaryProposals(), is("8765|4321"));
+    
+    pf.removeOnePerson(person);
    
     }
     
